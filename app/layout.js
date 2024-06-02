@@ -1,6 +1,7 @@
 import { Outfit } from 'next/font/google';
 import './globals.css';
 import Header from './_components/Header';
+import PrelineScript from './_components/PrelineScript';
 
 const outfit = Outfit({ subsets: ['latin'] });
 
@@ -13,7 +14,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={outfit.className}>
-        <div className="md:px-16 px-2">
+        <div className="">
+          <PrelineScript />
           <Header />
           {children}
         </div>
