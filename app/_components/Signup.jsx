@@ -1,15 +1,15 @@
 'use client';
-
 import React from 'react';
+import { useFormState } from 'react-dom';
 import Link from 'next/link';
 import { registerUserAction } from '../data/actions/auth-actions';
-import { useFormState } from 'react-dom';
+import { ZodErrors } from './custom/ZodErrors';
+
+const INITIAL_STATE = {
+  data: null,
+};
 
 function Signup() {
-  const INITIAL_STATE = {
-    data: null,
-  };
-
   const [formState, formAction] = useFormState(
     registerUserAction,
     INITIAL_STATE
@@ -86,9 +86,9 @@ function Signup() {
                     id="username"
                     name="username"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                    required
                     aria-describedby="username-error"
                   />
+                  <ZodErrors error={formState?.zodErrors?.username} />
                   <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                     <svg
                       className="size-5 text-red-500"
@@ -119,13 +119,13 @@ function Signup() {
                 </label>
                 <div className="relative">
                   <input
-                    type="email"
+                    type="text"
                     id="email"
                     name="email"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                    required
                     aria-describedby="email-error"
                   />
+                  <ZodErrors error={formState?.zodErrors?.email} />
                   <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                     <svg
                       className="size-5 text-red-500"
@@ -160,9 +160,9 @@ function Signup() {
                     id="password"
                     name="password"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                    required
                     aria-describedby="password-error"
                   />
+                  <ZodErrors error={formState?.zodErrors?.password} />
                   <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                     <svg
                       className="size-5 text-red-500"
