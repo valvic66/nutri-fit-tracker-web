@@ -4,6 +4,7 @@ import { useFormState } from 'react-dom';
 import Link from 'next/link';
 import { registerUserAction } from '../data/actions/auth-actions';
 import { ZodErrors } from './custom/ZodErrors';
+import { StrapiErrors } from './custom/StrapiErrors';
 
 const INITIAL_STATE = {
   data: null,
@@ -215,6 +216,7 @@ function Signup() {
               >
                 Sign up
               </button>
+              <StrapiErrors error={formState?.strapiErrors} />
             </div>
           </form>
         </div>
