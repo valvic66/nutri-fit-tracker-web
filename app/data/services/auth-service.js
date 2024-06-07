@@ -21,7 +21,7 @@ export async function registerUserService(userData) {
   }
 }
 
-export async function loginUserService(userData) {
+export async function signinUserService(userData) {
   const url = new URL('/api/auth/local', baseUrl);
 
   try {

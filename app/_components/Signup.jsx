@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { registerUserAction } from '../data/actions/auth-actions';
 import { ZodErrors } from './custom/ZodErrors';
 import { StrapiErrors } from './custom/StrapiErrors';
+import { SubmitButton } from './custom/SubmitButton';
 
 const INITIAL_STATE = {
   data: null,
@@ -37,7 +38,7 @@ function Signup() {
         </div>
 
         <div className="mt-5">
-          <button
+          {/* <button
             type="button"
             className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
           >
@@ -66,11 +67,11 @@ function Signup() {
               />
             </svg>
             Sign up with Google
-          </button>
+          </button> */}
 
-          <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600">
+          {/* <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600">
             Or
-          </div>
+          </div> */}
 
           <form action={formAction}>
             <div className="grid gap-y-4">
@@ -185,7 +186,7 @@ function Signup() {
                 </p>
               </div>
 
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <div className="flex">
                   <input
                     id="remember-me"
@@ -208,14 +209,13 @@ function Signup() {
                     </a>
                   </label>
                 </div>
-              </div>
+              </div> */}
 
-              <button
-                type="submit"
+              <SubmitButton
                 className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-              >
-                Sign up
-              </button>
+                text="Sign Up"
+                loadingText="Loading"
+              />
               <StrapiErrors error={formState?.strapiErrors} />
             </div>
           </form>

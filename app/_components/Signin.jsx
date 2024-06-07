@@ -1,7 +1,19 @@
+'use client';
 import React from 'react';
+import { useFormState, setFormState } from 'react-dom';
 import Link from 'next/link';
+import { signinUserAction } from '../data/actions/auth-actions';
+import { ZodErrors } from './custom/ZodErrors';
+import { StrapiErrors } from './custom/StrapiErrors';
+import { SubmitButton } from './custom/SubmitButton';
+
+const INITIAL_STATE = {
+  data: null,
+};
 
 function Signin() {
+  const [formState, formAction] = useFormState(signinUserAction, INITIAL_STATE);
+
   return (
     <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-neutral-900 dark:border-neutral-700">
       <div className="p-4 sm:p-7">
@@ -21,7 +33,7 @@ function Signin() {
         </div>
 
         <div className="mt-5">
-          <button
+          {/* <button
             type="button"
             className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
           >
@@ -50,13 +62,13 @@ function Signin() {
               />
             </svg>
             Sign in with Google
-          </button>
+          </button> */}
 
-          <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600">
+          {/* <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600">
             Or
-          </div>
+          </div> */}
 
-          <form>
+          <form action={formAction}>
             <div className="grid gap-y-4">
               <div>
                 <label
@@ -67,13 +79,13 @@ function Signin() {
                 </label>
                 <div className="relative">
                   <input
-                    type="email"
+                    type="text"
                     id="email"
                     name="email"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                    required
                     aria-describedby="email-error"
                   />
+                  <ZodErrors error={formState?.zodErrors?.identifier} />
                   <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                     <svg
                       className="size-5 text-red-500"
@@ -103,12 +115,12 @@ function Signin() {
                   >
                     Password
                   </label>
-                  <a
+                  {/* <a
                     className="text-sm text-blue-600 decoration-2 hover:underline font-medium"
                     href="../examples/html/recover-account.html"
                   >
                     Forgot password?
-                  </a>
+                  </a> */}
                 </div>
                 <div className="relative">
                   <input
@@ -116,9 +128,9 @@ function Signin() {
                     id="password"
                     name="password"
                     className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                    required
                     aria-describedby="password-error"
                   />
+                  <ZodErrors error={formState?.zodErrors?.password} />
                   <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                     <svg
                       className="size-5 text-red-500"
@@ -140,7 +152,7 @@ function Signin() {
                 </p>
               </div>
 
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <div className="flex">
                   <input
                     id="remember-me"
@@ -157,14 +169,13 @@ function Signin() {
                     Remember me
                   </label>
                 </div>
-              </div>
-
-              <button
-                type="submit"
+              </div> */}
+              <SubmitButton
                 className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-              >
-                Sign in
-              </button>
+                text="Sign In"
+                loadingText="Loading"
+              />
+              <StrapiErrors error={formState?.strapiErrors} />
             </div>
           </form>
         </div>
