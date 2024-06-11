@@ -10,7 +10,7 @@ import {
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
   path: '/',
-  domain: 'https://nutri-fit-tracker-web.vercel.app',
+  domain: 'nutri-fit-tracker-web.vercel.app',
   httpOnly: true,
   secure: true,
 };
