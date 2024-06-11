@@ -1,5 +1,5 @@
 import { getAuthToken } from './get-token';
-import { getStrapiURL } from '../../../lib/utils';
+import { getStrapiDevURL, getStrapiProdURL } from '../../../lib/utils';
 import qs from 'qs';
 
 const query = qs.stringify({
@@ -7,7 +7,8 @@ const query = qs.stringify({
 });
 
 export async function getUserMeLoader() {
-  const baseUrl = getStrapiURL();
+  // const baseUrl = getStrapiDevURL();
+  const baseUrl = getStrapiProdURL();
 
   const url = new URL('/api/users/me', baseUrl);
   url.search = query;
