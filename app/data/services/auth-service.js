@@ -1,7 +1,6 @@
-import { getStrapiDevURL, getStrapiProdURL } from '../../../lib/utils';
+import { getStrapiURL } from '../../../lib/utils';
 
-// const baseUrl = getStrapiDevURL();
-const baseUrl = getStrapiProdURL();
+const baseUrl = getStrapiURL();
 
 export async function registerUserService(userData) {
   const url = new URL('/api/auth/local/register', baseUrl);
