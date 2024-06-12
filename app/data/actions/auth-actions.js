@@ -10,10 +10,9 @@ import {
 const config = {
   maxAge: 60 * 60 * 24 * 7, // 1 week
   path: '/',
-  domain:
-    process.env.NODE_ENV === 'production' ? process.env.HOST : 'localhost',
+  domain: process.env.HOST ?? 'localhost',
   httpOnly: true,
-  secure: true,
+  secure: process.env.NODE_ENV === 'production',
 };
 
 const schemaRegister = z.object({
