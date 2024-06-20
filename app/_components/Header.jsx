@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 function Header() {
   return (
-    <div className="flex justify-between items-center p-4 shadow-sm">
+    <div className="sticky top-0 z-10 bg-white flex justify-between items-center p-4 shadow-sm">
       <div className="flex items-center gap-10">
         <Image src="/logo.svg" alt="Logo" width={180} height={80} />
         <ul className="md:flex gap-6 hidden">
